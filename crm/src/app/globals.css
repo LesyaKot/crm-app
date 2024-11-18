@@ -7,11 +7,14 @@
   padding: 0;
   margin: 0;
 }
-body{
+body {
   background: #fafafa;
 }
 /*cd /c/Users/Lesya/WebstormProjects/next-app/crm*/
-/*taskkill //PID 23524 //F*/
-/*taskkill //PID 22352 //F*/
 
+/*cd crm*/
+/*npx kill-port 3000 3001 3002 3003 3004*/
 
+/*git add .*/
+/*git commit -m ""*/
+/*git push origin main*/

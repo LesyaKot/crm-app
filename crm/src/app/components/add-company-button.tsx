@@ -1,8 +1,9 @@
 'use client';
+
 import React, { useState } from 'react';
 import { Button } from '@headlessui/react';
 import dynamic from 'next/dynamic';
-// import CompanyFormModal from "@/app/components/company-form-modal";
+
 
 const CompanyFormModal = dynamic(() => import('./company-form-modal'), {
   ssr: false,
@@ -13,6 +14,7 @@ export default function AddCompanyButton() {
   return (
     <>
       <Button onClick={() => setShow(true)}>Add Company</Button>
+
       <CompanyFormModal
         onSubmit={console.log}
         show={show}

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Button } from '@headlessui/react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
 
 const CompanyFormModal = dynamic(() => import('./company-form-modal'), {
@@ -10,16 +11,11 @@ const CompanyFormModal = dynamic(() => import('./company-form-modal'), {
 });
 
 export default function AddCompanyButton() {
-  const [show, setShow] = useState(false);
+    const router = useRouter();
+
   return (
     <>
-      <Button onClick={() => setShow(true)}>Add Company</Button>
-
-      <CompanyFormModal
-        onSubmit={console.log}
-        show={show}
-        onClose={() => setShow(false)}
-      />
+        <Button onClick={() => router.push('/companies/new')}>Add company</Button>
     </>
   );
 }

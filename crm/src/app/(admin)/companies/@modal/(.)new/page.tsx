@@ -1,14 +1,38 @@
+// 'use client';
+// import React from 'react';
+// import { useRouter } from 'next/navigation';
+// import CompanyFormModal from '@/app/components/company-form-modal';
+//
+// export interface PageProps {}
+//
+// export default function Page({}: PageProps) {
+//     const router = useRouter();
+//
+//     return <CompanyFormModal show={true} onClose={() => router.back()} />;
+// }
+
 'use client';
+
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import CompanyForm from '@/app/components/company-form';
-import Modal from '@/app/components/modal';
+import CompanyFormModal from '@/app/components/company-form-modal';
+
 export interface PageProps {}
+
 export default function Page({}: PageProps) {
     const router = useRouter();
+
+    const handleSubmit = (formData: any) => {
+        // Обробка даних форми
+        console.log('Form submitted:', formData);
+        router.back(); // Повернення на попередню сторінку
+    };
+
     return (
-        <Modal show={true} onClose={() => router.back()}>
-            <CompanyForm onSubmit={console.log} />
-        </Modal>
+        <CompanyFormModal
+            show={true}
+            onClose={() => router.back()}
+            onSubmit={handleSubmit}
+        />
     );
 }

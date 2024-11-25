@@ -1,7 +1,10 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "prettier"
-  ]
+    "next/core-web-vitals",
+    "prettier" // ВАЖЛИВО: має бути останнім у списку
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error" // Примусове використання правил Prettier
+  }
 }

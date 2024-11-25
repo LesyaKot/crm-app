@@ -24,7 +24,6 @@ export type CompanyFieldValues = {
 };
 
 const initialValues: CompanyFieldValues = {
-
   title: '',
   description: '',
   status: CompanyStatus.Active,
@@ -65,9 +64,9 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
     await mutateAsync({
       ...values,
       categoryTitle:
-          categories?.find(({ id }) => id === values.categoryId)?.title ?? '',
+        categories?.find(({ id }) => id === values.categoryId)?.title ?? '',
       countryTitle:
-          countries?.find(({ id }) => id === values.countryId)?.title ?? '',
+        countries?.find(({ id }) => id === values.countryId)?.title ?? '',
     });
 
     if (onSubmit) {
@@ -76,67 +75,62 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   };
 
   return (
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className="flex flex-col gap-10">
         <p className="mb-0.5 text-xl">Add new company</p>
         <div className="flex gap-6">
           <div className="flex flex-col flex-1 gap-5">
             <LogoUploader label="Logo" placeholder="Upload photo" />
             <Input
-                required
-                label="Status"
-                placeholder="Status"
-                name="status"
-                as="select"
+              required
+              label="Status"
+              placeholder="Status"
+              name="status"
+              as="select"
             >
               {(Object.values(CompanyStatus) as CompanyStatus[]).map(
-                  (status) => (
-                      <option key={status} value={status}>
-                        <StatusLabel status={status} styled={false} />
-                      </option>
-                  ),
+                (status) => (
+                  <option key={status} value={status}>
+                    <StatusLabel status={status} styled={false} />
+                  </option>
+                )
               )}
             </Input>
             <Input
-                required
-                label="Country"
-                placeholder="Country"
-                name="countryId"
-                as="select"
+              required
+              label="Country"
+              placeholder="Country"
+              name="countryId"
+              as="select"
             >
               {countries?.map((country) => (
-                  <option key={country.id} value={country.id}>
-                    {country.title}
-                  </option>
+                <option key={country.id} value={country.id}>
+                  {country.title}
+                </option>
               ))}
             </Input>
           </div>
           <div className="flex flex-col flex-1 gap-5">
             <Input required label="Name" placeholder="Name" name="title" />
             <Input
-                required
-                label="Category"
-                placeholder="Category"
-                name="categoryId"
-                as="select"
+              required
+              label="Category"
+              placeholder="Category"
+              name="categoryId"
+              as="select"
             >
               {categories?.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.title}
-                  </option>
+                <option key={category.id} value={category.id}>
+                  {category.title}
+                </option>
               ))}
             </Input>
+            <Input required label="Joined date" type="date" name="joinedDate" />
             <Input
-                required
-                label="Joined date"
-                type="date"
-                name="joinedDate"
-            />
-            <Input
-                required
-                label="Description"
-                placeholder="Description"
-                name="description"
+              required
+              label="Description"
+              placeholder="Description"
+              name="description"
             />
           </div>
         </div>
@@ -144,6 +138,6 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
           Add company
         </Button>
       </Form>
-      </Formik>
+    </Formik>
   );
 }

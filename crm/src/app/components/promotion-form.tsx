@@ -52,7 +52,11 @@ export default function PromotionForm({
         },
     });
 
-    const handleSubmit = async (values: PromotionFieldValues) => {
+        const handleSubmit = async (values: PromotionFieldValues) => {
+        if (!company) {
+            throw new Error("Company data is not loaded yet.");
+        }
+
         await mutateAsync({
             ...values,
             discount: Number(values.discount) || 0,
@@ -64,7 +68,6 @@ export default function PromotionForm({
             onSubmit(values);
         }
     };
-
     return (
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className="flex flex-col gap-10">
